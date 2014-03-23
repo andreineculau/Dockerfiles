@@ -1,5 +1,5 @@
-# Ubuntu 12.04
-# version 0.1
+#               andreineculau/ubuntu-12.04
+# version       0.1
 
 from            ubuntu:12.04
 maintainer      Andrei Neculau <andrei.neculau@gmail.com>

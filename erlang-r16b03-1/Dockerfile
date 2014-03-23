@@ -1,5 +1,5 @@
-# Erlang R16B03-1
-# version 0.1
+#               andreineculau/erlang-r16b03-1
+# version       0.1
 
 from            andreineculau/ubuntu-12.04
 maintainer      Andrei Neculau <andrei.neculau@gmail.com>
@@ -7,7 +7,7 @@ maintainer      Andrei Neculau <andrei.neculau@gmail.com>
 add             https://github.com/erlang/otp/archive/OTP_R16B03-1.tar.gz /tmp
 
 workdir         /tmp
-run             tar -xvzf OTP_R16B03-1.tar.gz
+run             tar -xzf OTP_R16B03-1.tar.gz
 
 workdir         /tmp/otp-OTP_R16B03-1
 run             ./configure
