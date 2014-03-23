@@ -33,6 +33,6 @@ env             LANG       en_US.UTF-8
 env             LC_ALL     en_US.UTF-8
 
 # Basic
-run             apt-get install -y aptitude build-essential dialog openssl
+run             apt-get install -y aptitude autoconf automake build-essential dialog openssl pkg-config
 run             apt-get install -y libssl-dev libreadline6-dev
 run             apt-get install -y curl emacs git lynx mosh nano vim
