@@ -1,3 +1,5 @@
+# -*- mode:dockerfile; docker-image-name: "andreineculau/erlang-r16b03-1" -*-
+
 #               andreineculau/erlang-r16b03-1
 # version       0.1
 
