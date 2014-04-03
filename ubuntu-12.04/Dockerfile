@@ -34,6 +34,7 @@ run             dpkg-divert --local --rename /usr/bin/ischroot
 run             ln -sf /bin/true /usr/bin/ischroot
 
 # Update
+run             apt-get update -y
 run             apt-get dist-upgrade -y
 run             apt-get upgrade -y
 run             apt-get clean
