@@ -9,6 +9,14 @@ maintainer      Andrei Neculau <andrei.neculau@gmail.com>
 env             DEBIAN_FRONTEND noninteractive
 env             APTGET apt-get install -y --no-install-recommends
 
+# Workaround for upstart init, from https://github.com/dotcloud/docker/issues/1024
+run             dpkg-divert --local --rename --add /sbin/initctl
+run             ln -sf /bin/true /sbin/initctl
+
+# Workaround for successful dist-upgrade, from https://github.com/dotcloud/docker/issues/1724
+run             dpkg-divert --local --rename /usr/bin/ischroot
+run             ln -sf /bin/true /usr/bin/ischroot
+
 # Pre-update
 run             apt-get update -y --fix-missing
 run             ${APTGET} apt-transport-https
@@ -24,14 +32,6 @@ run             echo debconf shared/accepted-oracle-license-v1-1 seen true | sud
 
 # node (ppa:chris-lea/node.js)
 run             add-apt-repository -y ppa:chris-lea/node.js
-
-# Workaround for upstart init, from https://github.com/dotcloud/docker/issues/1024
-run             dpkg-divert --local --rename --add /sbin/initctl
-run             ln -sf /bin/true /sbin/initctl
-
-# Workaround for successful dist-upgrade, from https://github.com/dotcloud/docker/issues/1724
-run             dpkg-divert --local --rename /usr/bin/ischroot
-run             ln -sf /bin/true /usr/bin/ischroot
 
 # Update
 run             apt-get update -y
