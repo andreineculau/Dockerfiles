@@ -41,19 +41,20 @@ run             apt-get clean
 run             rm -rf /var/cache/apt/*
 
 # Language
-run             locale-gen en_US.UTF-8
-env             LANG       en_US.UTF-8
-env             LC_ALL     en_US.UTF-8
+run             locale-gen    en_US.UTF-8
+run             update-locale en_US.UTF-8
+env             LANG          en_US.UTF-8
+env             LC_ALL        en_US.UTF-8
+run             dpkg-reconfigure locales
 
 # Basic
 run             ${APTGET} aptitude autoconf automake build-essential cron dialog g++ gcc make openssl pkg-config psmisc
 run             ${APTGET} libreadline6-dev libssl-dev libxml2-dev libxslt-dev libxslt1-dev zlib1g-dev
-run             ${APTGET} curl emacs git less lynx mosh nano vim
+run             ${APTGET} curl emacs git less mosh nano
 
 # SSH
+run             mkdir -p /root/.ssh && chmod 700 /root/.ssh
+run             echo "Host *\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config && chmod 600 /root/.ssh/config
+
 add             . /build
-run             mkdir /root/.ssh
-run             chmod 700 /root/.ssh
-run             [ -d /build/.ssh ] && cp -R /build/.ssh /root/
-run             find /root/.ssh -type f -exec chmod 600 {} \;
-run             echo "Host *\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
+run             chown -R root:root /build
