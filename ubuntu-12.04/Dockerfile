@@ -48,9 +48,10 @@ env             LC_ALL        en_US.UTF-8
 run             dpkg-reconfigure locales
 
 # Basic
-run             ${APTGET} aptitude autoconf automake build-essential cron dialog g++ gcc make openssl pkg-config psmisc
-run             ${APTGET} libreadline6-dev libssl-dev libxml2-dev libxslt-dev libxslt1-dev zlib1g-dev
-run             ${APTGET} curl emacs git less mosh nano
+run             ${APTGET} aptitude autoconf automake build-essential cron dialog openssl pkg-config psmisc
+#run             ${APTGET} g++ gcc make
+#run             ${APTGET} libreadline6-dev libssl-dev libxml2-dev libxslt-dev libxslt1-dev zlib1g-dev
+run             ${APTGET} curl emacs git less
 
 # SSH
 run             mkdir -p /root/.ssh && chmod 700 /root/.ssh
